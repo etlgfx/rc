@@ -10,6 +10,8 @@ compinit
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_DUPS
 SAVEHIST=1000
 unsetopt beep
 bindkey -v
@@ -17,11 +19,12 @@ bindkey -v
 
 PS1="%{[01;33m%}%n@%m %{[01;32m%}%~%{[0m%}%# "
 alias ls='ls -aF --color=auto'
-alias fgrep='fgrep --color=auto --exclude-dir=".svn"'
-alias egrep='egrep --color=auto --exclude-dir=".svn"'
-alias grep='grep --color=auto --exclude-dir=".svn"'
+alias fgrep='fgrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
+alias egrep='egrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
+alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 
 bindkey ${terminfo[khome]} beginning-of-line
 bindkey ${terminfo[kend]} end-of-line
 bindkey ${terminfo[kdch1]} delete-char
 bindkey ${terminfo[kich1]} overwrite-mode
+bindkey  history-incremental-search-backward
