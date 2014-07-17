@@ -16,12 +16,15 @@ set incsearch
 set smartindent
 set autoindent
 set cindent
+set cinoptions+=j1,J1
 set ignorecase
 set smartcase
 set dir=/tmp/
 set linebreak
 set formatoptions+=tcqor
 set nowrap
+set wildmenu
+set wildignorecase
 
 syntax on
 filetype indent on
