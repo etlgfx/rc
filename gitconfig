@@ -1,0 +1,12 @@
+[user]
+	email = eric@viafoura.com
+	name = Eric Liang
+[push]
+	default = upstream
+[log]
+	date = local
+[core]
+	pager = less -nFX -x 4
+[pager]
+	branch = less -nFX -x 4
+
