@@ -1,3 +1,5 @@
+set t_Co=256
+
 au BufWritePost *.php !php -l <afile>
 au BufWritePost *.js !jshint <afile>
 
