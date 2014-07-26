@@ -1,22 +1,15 @@
+ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="etlgfx"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git npm vi-mode)
 
-ZSH=$HOME/.oh-my-zsh
 
-source $ZSH/lib/key-bindings.zsh
+source $ZSH/oh-my-zsh.sh
 source $ZSH/lib/key-bindings.zsh
 
 export EDITOR='vim'
-
-# The following lines were added by compinstall
-#zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-#zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=* r:|=*'
-#zstyle :compinstall filename '/home/liange/.zshrc'
-#autoload -Uz compinit
-#compinit
 
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
@@ -34,12 +27,6 @@ alias ls='ls -aF --color=auto'
 alias fgrep='fgrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 alias egrep='egrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
-
-#bindkey ${terminfo[khome]} beginning-of-line
-#bindkey ${terminfo[kend]} end-of-line
-#bindkey ${terminfo[kdch1]} delete-char
-#bindkey ${terminfo[kich1]} overwrite-mode
-#bindkey  history-incremental-search-backward
 
 SSH_ENV="$HOME/.ssh/environment"
 
