@@ -28,5 +28,9 @@ set nowrap
 set wildmenu
 set wildignorecase
 
+execute pathogen#infect()
 syntax on
-filetype indent on
+filetype plugin indent on
+
+let g:seoul256_background=236
+colorscheme seoul256
