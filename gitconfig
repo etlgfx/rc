@@ -3,6 +3,7 @@
 	name = Eric Liang
 [push]
 	default = upstream
+	followTags = true
 [log]
 	date = local
 [core]
