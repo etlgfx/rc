@@ -10,4 +10,5 @@
 	pager = less -nFX -x 4
 [pager]
 	branch = less -nFX -x 4
-
+[alias]
+    lg = log --all --graph --decorate
