@@ -1,5 +1,6 @@
-set guifont=Inconsolata\ 11.5
+set guifont=Inconsolata\ 10
 set guioptions=acig
+set linespace=1
 set lines=54
 set columns=194
 "set list

@@ -3,8 +3,8 @@ ZSH_THEME="etlgfx"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git npm vi-mode)
 
+plugins=(git npm vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH/lib/key-bindings.zsh
@@ -28,6 +28,10 @@ alias fgrep='fgrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 alias egrep='egrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 
+function ec2-ls {
+    aws ec2 describe-instances --profile=$1 --output=table --query 'Reservations[].Instances[].[Tags[?Key==`Environment`]|[0].Value, Placement.AvailabilityZone, LaunchTime, InstanceId, InstanceType, Tags[?Key==`Name`]|[0].Value, PrivateIpAddress]' | grep "^|" | grep -v "DescribeInstances" | sed 's/|/ /g' | sort
+}
+
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
@@ -36,6 +40,7 @@ function start_agent {
      echo succeeded
      chmod 600 "${SSH_ENV}"
      . "${SSH_ENV}" > /dev/null
+     /usr/bin/ssh-add;
 }
 
 # Source SSH settings, if applicable
