@@ -49,10 +49,6 @@ alias fgrep='fgrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 alias egrep='egrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
 
-#function vf-ec2 {
-    #ec2-ls()
-#}
-
 function ec2-ls {
     aws ec2 describe-instances --profile=$AWS_PROFILE --output=table --query 'Reservations[].Instances[].[Tags[?Key==`Environment`]|[0].Value, Placement.AvailabilityZone, LaunchTime, InstanceId, InstanceType, Tags[?Key==`Name`]|[0].Value, PrivateIpAddress]' | grep "^|" | grep -v "DescribeInstances" | sed 's/|/ /g' | sort
 }
