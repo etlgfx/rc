@@ -57,7 +57,22 @@ function vf-ssh {
     COLOR_START="%F{085}"
     COLOR_END="%f"
 
-    if [ $# -eq 1 ]
+    if [ $# -eq 0 ]
+    then
+        echo "Provide at least one argument to search for the machines you want to ssh into."
+        echo "If you have multiple aws credentials profiles you can set the environment variable"
+        echo "AWS_PROFILE to select the one you want."
+        echo ""
+        echo "  Example:"
+        echo ""
+        echo "    $ vf-ssh vf-test3 php"
+        echo ""
+        echo "  Example with aws profile:"
+        echo ""
+        echo "    $ AWS_PROFILE=profile vf-ssh cassandra session"
+        echo ""
+        return
+    elif [ $# -eq 1 ]
     then
         machine=`ec2-ls | grep $1 | head -n 1`
     elif [ $# -eq 2 ]
