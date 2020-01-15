@@ -1,3 +1,5 @@
+export TERM='xterm-256color'
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -9,6 +11,7 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="mortalscumbag"
 #ZSH_THEME="nanotech"
 #ZSH_THEME="pygmalion"
+
 ZSH_THEME="etlgfx"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 COMPLETION_WAITING_DOTS="true"
@@ -26,15 +29,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git npm vi-mode)
+plugins=(git rails ruby npm vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH/lib/key-bindings.zsh
 
 # User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:/home/eric/.gem/ruby/2.1.0/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 
 export EDITOR='vim'
 
@@ -44,51 +44,16 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-alias ls='ls -aF --color=auto'
-alias fgrep='fgrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
-alias egrep='egrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
-alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
+if [[ `uname` == "Darwin" ]]; then
+    alias ls='ls -aFG'
+else
+    alias ls='ls -aF --color=auto'
+    alias fgrep='fgrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
+    alias egrep='egrep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
+    alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir=".git"'
+fi
 
-function ec2-ls {
-    aws ec2 describe-instances --profile=$AWS_PROFILE --output=table --query 'Reservations[].Instances[].[Tags[?Key==`Environment`]|[0].Value, Placement.AvailabilityZone, LaunchTime, InstanceId, InstanceType, Tags[?Key==`Name`]|[0].Value, PrivateIpAddress]' | grep "^|" | grep -v "DescribeInstances" | sed 's/|/ /g' | sort
-}
-
-function vf-ssh {
-    COLOR_START="%F{085}"
-    COLOR_END="%f"
-
-    if [ $# -eq 0 ]
-    then
-        echo "Provide at least one argument to search for the machines you want to ssh into."
-        echo "If you have multiple aws credentials profiles you can set the environment variable"
-        echo "AWS_PROFILE to select the one you want."
-        echo ""
-        echo "  Example:"
-        echo ""
-        echo "    $ vf-ssh vf-test3 php"
-        echo ""
-        echo "  Example with aws profile:"
-        echo ""
-        echo "    $ AWS_PROFILE=profile vf-ssh cassandra session"
-        echo ""
-        return
-    elif [ $# -eq 1 ]
-    then
-        machine=`ec2-ls | grep $1 | head -n 1`
-    elif [ $# -eq 2 ]
-    then
-        machine=`ec2-ls | grep $1 | grep $2 | head -n 1`
-    elif [ $# -eq 3 ]
-    then
-        machine=`ec2-ls | grep $1 | grep $2 | grep $3 | head -n 1`
-    else
-        echo "Too many arguments"
-        return
-    fi
-
-    print -P $COLOR_START $machine $COLOR_END
-    ssh `echo $machine | awk '{print $7}'`
-}
+alias vim='nvim'
 
 setopt HIST_IGNORE_DUPS
 unsetopt beep
@@ -98,15 +63,6 @@ unsetopt beep
 #bindkey ${terminfo[kdch1]} delete-char
 #bindkey ${terminfo[kich1]} overwrite-mode
 #bindkey  history-incremental-search-backward
-
-function git-delete-branch {
-    if [ $# != 1 ]; then
-        return 1
-    fi
-
-    git branch -d $1 && git push origin :$1
-    return $?
-}
 
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -131,13 +87,3 @@ else
      start_agent;
 fi
 
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-	export TERM='xterm-256color'
-else
-	export TERM='xterm-color'
-fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export JAVA_HOME=/usr/lib/jvm/default
-export GO_PATH=$HOME/go
