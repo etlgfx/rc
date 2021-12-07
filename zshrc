@@ -29,7 +29,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails ruby npm vi-mode)
+#plugins=(git)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 source $ZSH/lib/key-bindings.zsh
@@ -87,3 +88,16 @@ else
      start_agent;
 fi
 
+if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
+if [ -e /Users/ericliang/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ericliang/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export GO111MODULE="auto"
+export PATH=$PATH:/usr/local/bin/go/bin
+export JAVA_HOME=/usr/local/opt/openjdk@11/bin
+#export GOPATH=$HOME/go
+
+git_prompt_info() {}
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+
+[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)

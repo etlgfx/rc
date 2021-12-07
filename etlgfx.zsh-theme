@@ -1,11 +1,11 @@
 function my_git_prompt() {
   tester=$(git rev-parse --git-dir 2> /dev/null) || return
 
-  INDEX=$(git status --porcelain 2> /dev/null)
+  INDEX=$(git status -uno --porcelain 2> /dev/null)
   STATUS=""
 
   # is branch ahead?
-  if $(git status -b --porcelain 2> /dev/null | grep '##.*ahead' &> /dev/null); then
+  if $(git status -uno -b --porcelain 2> /dev/null | grep '##.*ahead' &> /dev/null); then
     STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD"
   fi
 
@@ -37,7 +37,7 @@ function my_git_prompt() {
 }
 
 function my_current_branch() {
-  echo $(current_branch || echo "(no branch)")
+  echo $(git branch --show-current || echo "(no branch)")
 }
 
 function ssh_connection() {
@@ -47,7 +47,8 @@ function ssh_connection() {
 }
 
 local ret_status="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})%?%{$reset_color%}"
-PROMPT=$'$(ssh_connection)%F{214}%n%f%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} (%{$fg_bold[blue]%}%~%{$reset_color%}) $(my_git_prompt)\n[${ret_status}] %# '
+PROMPT=$'$(ssh_connection)%F{214}%n%f%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} (%{$fg_bold[blue]%}%~%{$reset_color%}) $(my_git_prompt) \n[${ret_status}] %# '
+#PROMPT=$'$(ssh_connection)%F{214}%n%f%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%} (%{$fg_bold[blue]%}%~%{$reset_color%}) \n[${ret_status}] %# '
 RPROMPT='%F{green}%D{%H:%M}%{$reset_color%}'
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg_bold[red]%}"
