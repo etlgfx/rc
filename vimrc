@@ -39,6 +39,8 @@ set t_Co=256
 
 hi ExtraWhitespace ctermbg=red
 
+let g:python3_host_prog = '~/.pyenv/versions/3.10.0/bin/python'
+let g:loaded_python_provider = 0
 let g:netrw_sort_sequence='[\/]$,node_modules,\<core\%(\.\d\+\)\=,\.[a-np-z]$,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'
 let g:PHP_vintage_case_default_indent=1
 let g:deoplete#enable_at_startup=1
@@ -64,6 +66,8 @@ set wildignore=*.obj,*.o,.git,.svn,.class
 set diffexpr="diff -w"
 set list
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+set scrolloff=8
+set sidescrolloff=8
 
 syntax on
 filetype plugin indent on
@@ -76,10 +80,6 @@ hi Search guifg=#000000 guibg=#c0c000
 
 " yank Y like D
 nnoremap Y y$
-
-" centered searches
-nnoremap n nzzzv
-nnoremap N Nzzzv
 
 " keep cursor when joining
 nnoremap J mzJ`z
@@ -95,6 +95,8 @@ inoremap - -<c-g>u
 " moving text visual mode
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+noremap gf :e <cfile><CR>
 
 try
 " === Denite setup ==="
