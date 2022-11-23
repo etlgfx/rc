@@ -13,3 +13,5 @@
 	branch = less -nFX -x 4
 [alias]
     lg = log --all --graph --decorate
+[pull]
+	ff = only
