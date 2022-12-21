@@ -11,6 +11,8 @@ Plug 'megantiu/true.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
+
+
 Plug 'scrooloose/nerdtree'
 " Plug 'zchee/nvim-go', { 'do': 'make'}
 Plug 'svermeulen/nvim-marksman', { 'do': ':UpdateRemotePlugins' }
@@ -138,7 +140,6 @@ set statusline+=\ (%P)\ "percent through file
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
 set statusline+=%h      "help file flag
-
 
 " COC
 
@@ -293,4 +294,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-

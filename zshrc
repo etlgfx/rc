@@ -88,20 +88,46 @@ else
      start_agent;
 fi
 
-if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
-if [ -e /Users/ericliang/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ericliang/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
 export GO111MODULE="auto"
 export PATH=$PATH:/usr/local/bin/go/bin
 export JAVA_HOME=/usr/local/opt/openjdk@11/bin
 #export GOPATH=$HOME/go
 
+if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
+if [ -e /Users/ericliang/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ericliang/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 git_prompt_info() {}
 
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
-[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+export PYENV_SHELL=zsh
+source '/opt/homebrew/Cellar/pyenv/2.3.6/libexec/../completions/pyenv.zsh'
+command pyenv rehash 2>/dev/null
+pyenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(pyenv "sh-$command" "$@")"
+    ;;
+  *)
+    command pyenv "$command" "$@"
+    ;;
+  esac
+}
+
+function sql () {
+  _port=`ssh $_spin_fqdn cat /run/ports/shopify--$_service/svc/mysql`
+  echo $_spin_fqdn:$_port
+  mysql -u root -h $_spin_fqdn -P $_port
+}
