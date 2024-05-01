@@ -7,7 +7,7 @@ call plug#begin('~/.vim/vim-plug')
 Plug 'jonathanfilip/vim-lucius'
 Plug 'habamax/vim-gruvbit'
 " Plug 'co1ncidence/mountaineer'
-Plug 'megantiu/true.vim'
+"Plug 'megantiu/true.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -19,24 +19,24 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'nvim-tree/nvim-web-devicons' "
 Plug 'nvim-tree/nvim-tree.lua'
 
-Plug 'svermeulen/nvim-marksman', { 'do': ':UpdateRemotePlugins' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+" Plug 'svermeulen/nvim-marksman', { 'do': ':UpdateRemotePlugins' }
 " Plug 'ripxorip/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 
 " Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/denite.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
 " Plug 'ianks/vim-tsx'
 " Plug 'leafgarland/typescript-vim'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'airblade/vim-gitgutter', {'branch': 'main'}
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -113,6 +113,7 @@ noremap gf :e <cfile><CR>
 
 " nvim-tree
 source ~/.config/nvim/nvim-tree.lua
+source ~/.config/nvim/nvim-telescope.lua
 
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
