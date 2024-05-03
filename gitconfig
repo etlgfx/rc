@@ -1,17 +1,21 @@
 [user]
 	email = etlgfx@gmail.com
 	name = Eric Liang
+[fetch]
+	prune = true
+	prunetags = true
 [push]
 	default = upstream
 	followTags = true
-[log]
-	date = local
+[pull]
+	ff = only
 [core]
 	pager = less -nFX -x 4
 	editor = vim
 [pager]
 	branch = less -nFX -x 4
+[log]
+	date = local
 [alias]
     lg = log --all --graph --decorate
-[pull]
-	ff = only
+    b = branch --format='%(color:bold white)%(committerdate:iso)%(color:reset) %(align:120,left)%(align:48,left)%(if)%(HEAD)%(then)%(color:bold green)%(else)%(color:bold red)%(end)%(HEAD)%(refname:short)%(color:reset)%(end) %(align:48,left)%(color:yellow)%(upstream:lstrip=2)%(color:reset) %(upstream:track)%(end)%(end) %(color:green)%(objectname:short)%(color:reset) %(contents:subject)'
