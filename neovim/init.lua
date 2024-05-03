@@ -26,5 +26,7 @@ require("lazy").setup({
 
 require('config/editor')
 require('config/nvim-tree')
+require('config/nvim-telescope')
+-- TODO
+-- require('config/status')
 
-vim.cmd.colorscheme('gruvbit')

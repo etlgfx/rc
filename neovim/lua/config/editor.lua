@@ -1,6 +1,10 @@
-vim.cmd.highlight('link', 'ExtraWhitespace', 'Error')
+-- vim.cmd([[
+-- 	highlight link ExtraWhitespace Error
+-- ]])
 
-vim.opt.termguicolors = true
+vim.opt.termguicolors = true   
+    
+
 vim.opt.ts = 4
 vim.opt.sw = 4
 vim.opt.hlsearch = true
@@ -24,3 +28,11 @@ vim.opt.list = true
 vim.opt.listchars = {eol = '¬', tab = '>·', trail = '~', extends = '>', precedes = '<'}
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
+
+vim.cmd.colorscheme('gruvbit')
+
+-- filetype plugin indent on
+-- filetype off                  " required
+-- let g:python3_host_prog = '~/.pyenv/versions/3.10.0/bin/python'
+-- let g:loaded_python_provider = 0
+--" let g:netrw_sort_sequence='[\/]$,node_modules,\<core\%(\.\d\+\)\=,\.[a-np-z]$,\.h$,\.c$,\.cpp$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$'

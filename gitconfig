@@ -1,6 +1,3 @@
-[user]
-	email = etlgfx@gmail.com
-	name = Eric Liang
 [fetch]
 	prune = true
 	prunetags = true
