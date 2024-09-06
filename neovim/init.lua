@@ -27,6 +27,7 @@ require("lazy").setup({
 require('config/editor')
 require('config/nvim-tree')
 require('config/nvim-telescope')
+require('config/treesitter')
 -- TODO
 -- require('config/status')
 
