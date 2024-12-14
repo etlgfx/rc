@@ -98,7 +98,7 @@ if [ -e /Users/ericliang/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/eric
 
 git_prompt_info() {}
 
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -108,7 +108,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export PYENV_SHELL=zsh
 PYENV_VERSION=`pyenv --version | awk '{print $2}'`
-
 source "/usr/local/Cellar/pyenv/${PYENV_VERSION}/completions/pyenv.zsh"
 
 command pyenv rehash 2>/dev/null
