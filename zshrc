@@ -107,7 +107,10 @@ export NVM_DIR="$HOME/.nvm"
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 
 export PYENV_SHELL=zsh
-source '/opt/homebrew/Cellar/pyenv/2.3.6/libexec/../completions/pyenv.zsh'
+PYENV_VERSION=`pyenv --version | awk '{print $2}'`
+
+source "/usr/local/Cellar/pyenv/${PYENV_VERSION}/completions/pyenv.zsh"
+
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
