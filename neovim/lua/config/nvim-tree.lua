@@ -7,10 +7,15 @@ require("nvim-tree").setup({
     sorter = "case_sensitive",
   },
   view = {
-    width = 30,
+    centralize_selection = true,
+    width = {
+        min = 30,
+        max = 60,
+    },
   },
   renderer = {
     group_empty = true,
+    full_name = true,
   },
   filters = {
     dotfiles = true,

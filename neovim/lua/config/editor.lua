@@ -23,7 +23,8 @@ vim.opt.wrap = false
 vim.opt.wildmenu = true
 vim.opt.wildignorecase = true
 vim.opt.wildignore = {'*.obj','*.o','.git','.svn','.class'}
-vim.opt.diffexpr="diff -w"
+-- vim.opt.diffexpr="diff -w"
+vim.opt.diffopt = {'internal', 'filler', 'closeoff', 'iwhite', 'iwhiteall'}
 vim.opt.list = true
 vim.opt.listchars = {eol = '¬', tab = '>·', trail = '~', extends = '>', precedes = '<'}
 vim.opt.scrolloff = 8
