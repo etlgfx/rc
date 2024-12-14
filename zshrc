@@ -109,7 +109,7 @@ export NVM_DIR="$HOME/.nvm"
 export PYENV_SHELL=zsh
 PYENV_VERSION=`pyenv --version | awk '{print $2}'`
 
-if [-e "/usr/local/Cellar/pyenv/${PYENV_VERSION}/completions/pyenv.zsh"]
+if [ -e "/usr/local/Cellar/pyenv/${PYENV_VERSION}/completions/pyenv.zsh" ]
 then
     source "/usr/local/Cellar/pyenv/${PYENV_VERSION}/completions/pyenv.zsh"
 else
