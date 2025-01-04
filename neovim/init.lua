@@ -19,15 +19,17 @@ require("lazy").setup({
 	'nvim-tree/nvim-tree.lua',
 	'nvim-lua/plenary.nvim',
 	'nvim-telescope/telescope.nvim',
+    'nvimtools/none-ls.nvim',
+    'williamboman/mason.nvim',
     {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}
 })
-
--- 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 require('config/editor')
 require('config/nvim-tree')
 require('config/nvim-telescope')
 require('config/treesitter')
+require('config/mason')
+require('config/none-ls')
 -- TODO
 -- require('config/status')
 
