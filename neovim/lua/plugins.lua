@@ -9,8 +9,7 @@ return {
         end,
         opts = ...
     },
-    { 'nvim-tree/nvim-web-devicons' },
-    { 'nvim-lua/plenary.nvim' },
+    --{  },
     { 'airblade/vim-gitgutter' },
     { 'editorconfig/editorconfig-vim' },
 }
