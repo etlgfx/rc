@@ -30,7 +30,7 @@ vim.opt.listchars = {eol = '¬', tab = '>·', trail = '~', extends = '>', preced
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
-vim.cmd.colorscheme('gruvbit')
+-- vim.cmd.colorscheme('gruvbit')
 
 -- filetype plugin indent on
 -- filetype off                  " required

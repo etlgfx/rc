@@ -1,11 +1,13 @@
 return {
     {
-        'habamax/vim-gruvbit',
+        "ellisonleao/gruvbox.nvim",
         lazy = false,
-        priority = 1000,
-        config = function ()
-            vim.cmd([[colorscheme gruvbit]])
+        priority = 1000 ,
+        config = true,
+        init = function ()
+            vim.cmd([[colorscheme gruvbox]])
         end,
+        opts = ...
     },
     { 'nvim-tree/nvim-web-devicons' },
     { 'nvim-lua/plenary.nvim' },
