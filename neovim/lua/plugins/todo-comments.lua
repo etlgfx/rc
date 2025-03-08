@@ -4,7 +4,21 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons',
+            'nvim-telescope/telescope.nvim',
         },
+        init = function ()
+            vim.keymap.set('n', '<Leader>tt', '<cmd>TodoTelescope<CR>')
+            vim.keymap.set('n', '<Leader>tq', '<cmd>TodoQuickFix<CR>')
+            vim.keymap.set('n', '<Leader>tl', '<cmd>TodoLocList<CR>')
+
+            vim.keymap.set("n", "]t", function()
+                require("todo-comments").jump_next()
+            end, { desc = "Next todo comment" })
+
+            vim.keymap.set("n", "[t", function()
+                require("todo-comments").jump_prev()
+            end, { desc = "Previous todo comment" })
+        end,
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
