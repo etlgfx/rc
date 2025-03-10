@@ -9,12 +9,8 @@ return {
         end,
         opts = ...
     },
-    --{  },
     { 'airblade/vim-gitgutter' },
     { 'editorconfig/editorconfig-vim' },
 }
--- 'airblade/vim-gitgutter',
 -- 'editorconfig/editorconfig-vim',
--- 'nvim-telescope/telescope.nvim',
 -- TODO 'nvimtools/none-ls.nvim',
--- {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'}

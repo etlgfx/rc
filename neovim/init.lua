@@ -7,5 +7,4 @@ require('config/editor')
 -- require('config/mason')
 -- require('config/none-ls')
 -- TODO
--- require('config/status')
 
