@@ -6,5 +6,3 @@ require('config/editor')
 -- require('config/treesitter')
 -- require('config/mason')
 -- require('config/none-ls')
--- TODO
-

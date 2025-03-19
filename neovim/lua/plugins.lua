@@ -10,7 +10,8 @@ return {
         opts = ...
     },
     { 'airblade/vim-gitgutter' },
-    { 'editorconfig/editorconfig-vim' },
+    { 'neovim/nvim-lspconfig' },
+--    { 'editorconfig/editorconfig-vim' }, -- TODO: default?
 }
 -- 'editorconfig/editorconfig-vim',
 -- TODO 'nvimtools/none-ls.nvim',
